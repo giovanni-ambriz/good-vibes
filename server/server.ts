@@ -1,25 +1,33 @@
 import * as Path from 'node:path'
 import express from 'express'
-import cors, { CorsOptions } from 'cors'
+import affRouter from './routes/affirmationRoutes'
+import request from 'superagent'
+import { Request, Response } from 'express'
 
 const server = express()
 
-server.get('/api/v1/greeting', (req, res) => {
-  const greetings = ['hola', 'hi', 'hello', 'howdy']
-  const index = Math.floor(Math.random() * greetings.length)
-  console.log(index)
-  res.json({ greeting: greetings[index] })
-})
-
 server.use(express.json())
-server.use(cors('*' as CorsOptions))
 
-if (process.env.NODE_ENV === 'production') {
-  server.use(express.static(Path.resolve('public')))
-  server.use('/assets', express.static(Path.resolve('./dist/assets')))
-  server.get('*', (req, res) => {
-    res.sendFile(Path.resolve('./dist/index.html'))
-  })
+// Mount affirmation route
+server.use('/affirmation', affRouter)
+
+server.get('/', async (req: Request, res: Response) => {
+  try {
+    const affirmation = await getAffirmation()
+    res.json({ affirmation })
+  } catch (error) {
+    console.error('Error fetching affirmation:', error)
+    res.status(500).json({ message: 'Error fetching affirmation' })
+  }
+})
+async function getAffirmation() {
+  try {
+    const response = await request.get('https;//www.affirmations.dev/')
+    return response.body
+  } catch (error) {
+    console.error('Error fetching affirmation:', error)
+    return 'Error fetching affirmation'
+  }
 }
 
 export default server

@@ -30,6 +30,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.2",
+    "express-http-proxy": "^2.0.0",
     "superagent": "^8.1.2"
   },
   "devDependencies": {
@@ -43,7 +44,7 @@
     "@types/node": "^18.11.9",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
-    "@types/superagent": "^8.1.1",
+    "@types/superagent": "^8.1.7",
     "@types/supertest": "^6.0.2",
     "@vitejs/plugin-react": "^4.2.1",
     "esbuild": "^0.18.19",
