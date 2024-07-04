@@ -2,17 +2,16 @@
 
 import { useQuery } from '@tanstack/react-query'
 import { getImages } from '../apiClient'
-import { useImages } from '../apiClient'
 
 export function useImages() {
   return useQuery<string[], Error>({
     queryKey: ['images'],
     queryFn: getImages,
-  });
+  })
 }
 
 export default function DisplayImages() {
-  const { data, isLoading, isError } = useImages();
+  const { data, isLoading, isError } = useImages()
 
   if (isLoading) {
     return <p>Loading images...</p>
@@ -25,11 +24,7 @@ export default function DisplayImages() {
   return (
     <div>
       <h2>Images:</h2>
-      <div>
-        {data.map((imageUrl, index) => (
-          <img key={''} src={''} alt={''} />
-        ))}
-      </div>
+      <div>{data?.map((url) => <img key={url} src={url} alt="calm" />)}</div>
     </div>
-  );
+  )
 }

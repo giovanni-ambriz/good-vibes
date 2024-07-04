@@ -13,7 +13,9 @@ const App = () => {
       <div>
         <DisplayAffirmation />
       </div>
-      <div>{/* <ImgDisplay /> */}</div>
+      <div>
+        <ImgDisplay />
+      </div>
     </>
   )
 }

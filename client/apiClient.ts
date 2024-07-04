@@ -1,7 +1,5 @@
 import request from 'superagent'
-import { Affirmation } from '../../models/affirmations';
-
-
+import { Affirmation } from '../models/affirmations'
 
 export async function getAffirmation(): Promise<Affirmation> {
   const res = await request.get('/api/v1/affirmations')

@@ -6,7 +6,7 @@ import request from 'superagent'
 
 // this API is cors-restricted
 
-const router = express.Router()
+const affRouter = express.Router()
 
 affRouter.get('/', async (req, res) => {
   try {
@@ -21,13 +21,4 @@ affRouter.get('/', async (req, res) => {
   }
 })
 
-export default router
-
-// server.get('/api/v1/greeting', (req, res) => {
-//   const greetings = ['hola', 'hi', 'hello', 'howdy']
-//   const index = Math.floor(Math.random() * greetings.length)
-//   console.log(index)
-//   res.json({ greeting: greetings[index] })
-// })
-
-// server.use etc
+export default affRouter
