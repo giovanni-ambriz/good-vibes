@@ -11,7 +11,6 @@ const affRouter = express.Router()
 affRouter.get('/', async (req, res) => {
   try {
     const response = await request.get('https://www.affirmations.dev/')
-    // Handle successful response (extract affirmation data)
     const affirmation = response.body // Assuming affirmation data is in the response body
     console.log(affirmation)
     res.json(affirmation)
