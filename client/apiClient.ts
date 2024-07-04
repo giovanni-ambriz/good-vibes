@@ -1,5 +1,5 @@
 import request from 'superagent'
-import { Affirmation } from '../../models/affirmations'
+import { Affirmation } from '../../models/affirmations';
 
 // export async function getGreeting(): Promise<string> {
 //  const res = await request.get('/api/v1/greeting')
@@ -12,6 +12,6 @@ export async function getAffirmation(): Promise<Affirmation> {
 }
 
 export async function getImages(): Promise<string[]> {
-  const response = await request.get('https://api.unsplash.com') //modify path with api key and endpoint
+  const response = await request.get('/api/v1/calming-pics') //modify path with api key and endpoint
   return response.body.map((image: any) => image.urls.regular)
 }
