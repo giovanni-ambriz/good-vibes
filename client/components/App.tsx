@@ -1,5 +1,21 @@
 import { useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
+import DisplayAffirmation from './AffDisplay'
+
+const App = () => {
+  const [view, setView] = useState<'home' | 'affirmations'>('home')
+
+  return (
+    <div
+      style={{
+        padding: '40px',
+        fontFamily: 'Comic-Sans, Arial, Times-New-Roman',
+      }}
+    ></div>
+  )
+}
+
+/*
 
 const getGreeting = async () => {
   const response = await fetch('/api/v1/affirmations')
@@ -23,7 +39,7 @@ const App = () => {
   })
 
   if (isLoading) return <p>Loading</p>
-
+  
   return (
     <>
       {count}
@@ -35,3 +51,5 @@ const App = () => {
 }
 
 export default App
+
+*/
