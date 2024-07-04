@@ -1,23 +1,31 @@
 // imports go here
 import express from 'express'
+const router = express.Router()
+import superagent from 'superagent'
+import 'dotenv/config'
 import request from 'superagent'
+
 // code for fetching images from unsplash API goes here
 
 // this API is not CORS restricted
 
-const imgRouter = express.Router()
+// Access Key - 4kf1_49VsU1dJu89RhzHYReHNje7XxBRguWapbYTrCk
 
-imgRouter.get('/images', async (req, res) => {
+const baseUrl = 'https://api.unsplash.com'
+const collectionId = 'W__g8PXf6YA'
+
+router.get('/', async (req, res) => {
+  console.log('getting something')
   try {
     const response = await request
-      .get('https://api.unsplash.com/photos/random')
-      .query({ client_id: 'YOUR_UNSPLASH_ACCESS_KEY', count: 1 })
-    const image = response.body[0]
-    res.json({ image })
+      .get(`${baseUrl}/collections/${collectionId}/photos`)
+      .query({ client_id: process.env.IMG_ACCESS_KEY })
+    console.log(response.body)
+    res.json(response.body)
   } catch (error) {
-    console.error('Error fetching image:', error)
-    res.status(500).json({ message: 'Error fetching image' })
+    console.error('Error fetching calming pics:', error)
+    res.status(500).send('Error fetching images')
   }
 })
 
-export default imgRouter
+export default router

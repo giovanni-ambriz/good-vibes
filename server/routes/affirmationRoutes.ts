@@ -2,9 +2,13 @@
 import express from 'express'
 import request from 'superagent'
 
-const affRouter = express.Router()
+// code for fetching data from affirmations.dev goes in this file
 
-affRouter.get('/affirmations', async (req, res) => {
+// this API is cors-restricted
+
+const router = express.Router()
+
+router.get('/affirmations', async (req, res) => {
   try {
     const response = await request.get('https://www.affirmations.dev/')
     const affirmation = response.body // Assuming affirmation data is in the response body
@@ -15,4 +19,13 @@ affRouter.get('/affirmations', async (req, res) => {
   }
 })
 
-export default affRouter
+export default router
+
+// server.get('/api/v1/greeting', (req, res) => {
+//   const greetings = ['hola', 'hi', 'hello', 'howdy']
+//   const index = Math.floor(Math.random() * greetings.length)
+//   console.log(index)
+//   res.json({ greeting: greetings[index] })
+// })
+
+// server.use etc
