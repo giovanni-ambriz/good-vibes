@@ -9,6 +9,8 @@ import request from 'superagent'
 
 // this API is not CORS restricted
 
+// Access Key - 4kf1_49VsU1dJu89RhzHYReHNje7XxBRguWapbYTrCk
+
 const baseUrl = 'https://api.unsplash.com'
 const collectionId = 'W__g8PXf6YA'
 
