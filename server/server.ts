@@ -1,8 +1,5 @@
-import * as Path from 'node:path'
 import express from 'express'
 import affRouter from './routes/affirmationRoutes'
-import request from 'superagent'
-import { Request, Response } from 'express'
 import imgRouter from './routes/imageRoutes'
 
 const server = express()

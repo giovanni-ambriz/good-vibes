@@ -6,26 +6,18 @@ import request from 'superagent'
 
 // this API is cors-restricted
 
-const router = express.Router()
+const affRouter = express.Router()
 
-router.get('/affirmations', async (req, res) => {
+affRouter.get('/', async (req, res) => {
   try {
     const response = await request.get('https://www.affirmations.dev/')
     const affirmation = response.body // Assuming affirmation data is in the response body
-    res.json({ affirmation })
+    console.log(affirmation)
+    res.json(affirmation)
   } catch (error) {
     console.error('Error fetching affirmation:', error)
     res.status(500).json({ message: 'Error fetching affirmation' })
   }
 })
 
-export default router
-
-// server.get('/api/v1/greeting', (req, res) => {
-//   const greetings = ['hola', 'hi', 'hello', 'howdy']
-//   const index = Math.floor(Math.random() * greetings.length)
-//   console.log(index)
-//   res.json({ greeting: greetings[index] })
-// })
-
-// server.use etc
+export default affRouter

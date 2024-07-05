@@ -1,38 +1,36 @@
-/*
-
-const getGreeting = async () => {
-  const response = await fetch('/api/v1/affirmations')
-  if (!response.ok) {
-    throw new Error('Bad network response')
-  }
-  const data = await response.json()
-  return data.affirmation
-}
+import { useState } from 'react'
+import { useQuery } from '@tanstack/react-query'
+import DisplayAffirmation from './AffDisplay'
+import DisplayImages from './ImgDisplay'
 
 const App = () => {
-  const [count, setCount] = useState(0)
+  const [view, setView] = useState<'home' | 'affirmations'>('home')
 
-  const {
-    data: greeting,
-    isError,
-    isLoading,
-  } = useQuery({
-    queryKey: ['greeting', count],
-    queryFn: getGreeting,
-  })
-
-  if (isLoading) return <p>Loading</p>
-  
   return (
-    <>
-      {count}
-      <h1>{greeting}</h1>
-      {isError && <p style={{ color: 'red' }}>Error getting greeting</p>}
-      <button onClick={() => setCount(count + 1)}>Click</button>
-    </>
+    <div
+      style={{
+        padding: '40px',
+        fontFamily: 'Comic-Sans, Arial, Times-New-Roman',
+      }}
+    ></div>
   )
 }
+// const App = () => {
+//   return (
+//     <>
+//       <h1>Affirmations and Images Generator</h1>
+//       <h3>
+//         Click Affirm! and get a genuine affirmation and calm picture to remind
+//         you how great you are.
+//       </h3>
 
+//       <div>
+//         <DisplayAffirmation />
+//       </div>
+//       <div>
+//         <DisplayImages />
+//       </div>
+//     </>
+//   )
+// }
 export default App
-
-*/
