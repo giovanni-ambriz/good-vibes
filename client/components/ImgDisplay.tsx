@@ -1,7 +1,6 @@
-// this is where functions to display a different image when an affirmation is generated should go
-
 import { useQuery } from '@tanstack/react-query'
 import { getImages } from '../apiClient'
+import LoadingSpinner from './LoadingSpinner'
 
 export function useImages() {
   return useQuery<string[], Error>({
@@ -14,7 +13,7 @@ export default function DisplayImages() {
   const { data, isLoading, isError } = useImages()
 
   if (isLoading) {
-    return <p>Loading images...</p>
+    return <LoadingSpinner />
   }
 
   if (isError) {
