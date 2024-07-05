@@ -1,0 +1,31 @@
+@keyframes rise {
+  0%,
+  100% {
+    bottom: 0;
+    opacity: 0.5;
+  }
+  50% {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin: 20px auto; /* Center horizontally */
+}
+
+.sun {
+  width: 30px;
+  height: 30px;
+  background-color: #ffd700; /* Gold color */
+  border-radius: 50%;
+  position: absolute;
+  bottom: 0;
+  animation: rise 1.5s ease-in-out infinite;
+}

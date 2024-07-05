@@ -2,6 +2,7 @@ import React from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { getAffirmation } from '../apiClient'
 import { Affirmation } from '../../models/affirmations'
+import LoadingSpinner from './LoadingSpinner'
 
 export function useAffirmation() {
   return useQuery<Affirmation, Error>({
@@ -14,7 +15,7 @@ export default function DisplayAffirmation() {
   const { data, isLoading, isError, error } = useAffirmation()
 
   if (isLoading) {
-    return <p>Loading affirmation...</p> // We could use a loading spinner for this
+    return <LoadingSpinner />
   }
 
   if (isError) {
