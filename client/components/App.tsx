@@ -1,20 +1,3 @@
-import { useState } from 'react'
-import { useQuery } from '@tanstack/react-query'
-import DisplayAffirmation from './AffDisplay'
-
-const App = () => {
-  const [view, setView] = useState<'home' | 'affirmations'>('home')
-
-  return (
-    <div
-      style={{
-        padding: '40px',
-        fontFamily: 'Comic-Sans, Arial, Times-New-Roman',
-      }}
-    ></div>
-  )
-}
-
 /*
 
 const getGreeting = async () => {
