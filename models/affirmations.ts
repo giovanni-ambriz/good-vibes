@@ -1,5 +1,3 @@
 export interface Affirmation {
-  'affiemation': string
+  affirmation: string
 }
-
-
