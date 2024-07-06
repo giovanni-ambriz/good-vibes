@@ -10,22 +10,21 @@ export function useImages() {
   })
 }
 
-export default function DisplayImages() {
-  const { data, isLoading, isError } = useImages();
+export default function DisplayImages({ randomIndex }) {
+  const { data, isLoading, isError } = useImages()
 
   if (isLoading) {
     return <LoadingSpinner />
   }
 
   if (isError || !data || data.length === 0) {
-    return <p>Something went wrong while fetching images!</p>;
+    return <p>Something went wrong while fetching images!</p>
   }
 
-  const randomIndex = Math.floor(Math.random() * data.length);
-  const randomImage = data[randomIndex];
+  const randomImage = data[randomIndex]
 
   if (randomImage) {
-    document.body.style.backgroundImage = `url(${randomImage})`;
+    document.body.style.backgroundImage = `url(${randomImage})`
   }
 
   return null

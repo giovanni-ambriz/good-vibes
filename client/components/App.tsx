@@ -11,19 +11,22 @@ const App = () => {
   //   setView('affirmations'),
   //     setRefetchAff(prev => prev + 1)
   // }
-  const { refetch: affRefetch } = useAffirmation()
-  const { refetch: imgRefetch } = useImages()
+  const [randomIndex, setRandomIndex] = useState(0)
 
+  const { refetch } = useAffirmation()
+  const roll = () => Math.floor(Math.random() * 9)
+  
+  
   return (
     <div className="app">
       {/* {view === 'affirmations' && (
         <> */}
       {/* refetchAff={refetchAff} */}
       <DisplayAffirmation />
-      <DisplayImages />
+      <DisplayImages randomIndex={randomIndex} />
       {/* </>
       )} */}
-      <button onClick={() => (affRefetch(), imgRefetch())}>
+      <button onClick={() => (refetch(), setRandomIndex(roll()))}>
         Click for an affirmation
       </button>
     </div>

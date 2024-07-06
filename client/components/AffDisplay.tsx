@@ -37,7 +37,7 @@ export default function DisplayAffirmation() {
 
   return (
     <div>
-      <p className="affirmation">{displayText}</p>
+      <p className="affirmation" style={{ display: isFetching ? 'none' : 'block' }}>{displayText}</p>
       {isFetching && <p className="refetch">Loading a new affirmation... ✨</p>}
     </div>
   )
