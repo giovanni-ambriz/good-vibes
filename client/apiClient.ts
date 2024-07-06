@@ -7,6 +7,6 @@ export async function getAffirmation(): Promise<Affirmation> {
 }
 
 export async function getImages(): Promise<string[]> {
-  const response = await request.get('/api/v1/calming-pics') //modify path with api key and endpoint
+  const response = await request.get('/api/v1/calming-pics')
   return response.body.map((image: any) => image.urls.regular)
 }
