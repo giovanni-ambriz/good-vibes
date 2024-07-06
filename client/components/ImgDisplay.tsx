@@ -23,7 +23,16 @@ export default function DisplayImages() {
   return (
     <div>
       <h2>Images:</h2>
-      <div>{data?.map((url) => <img key={url} src={url} alt="calm" />)}</div>
+      <div>
+        {data?.map((url) => (
+          <img
+            key={url}
+            src={url}
+            alt="calm"
+            style={{ height: '300px', width: '300px' }}
+          />
+        ))}
+      </div>
     </div>
   )
 }

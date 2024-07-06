@@ -1,5 +1,6 @@
 import DisplayAffirmation from './AffDisplay'
 import React, { useState } from 'react'
+import DisplayImages from './ImgDisplay'
 
 
 const App = () => {
@@ -39,6 +40,7 @@ const App = () => {
       <main>
         {view === 'home' && <h1>Welcome to the Affirmations App</h1>}
         {view === 'affirmations' && <DisplayAffirmation />}
+        {view === 'affirmations' && <DisplayImages />}
       </main>
     </div>
   )
