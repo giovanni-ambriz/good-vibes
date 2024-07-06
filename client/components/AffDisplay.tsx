@@ -1,8 +1,9 @@
-import React from 'react'
+import { useEffect, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { getAffirmation } from '../apiClient'
 import { Affirmation } from '../../models/affirmations'
 import LoadingSpinner from './LoadingSpinner'
+import { wordByWord } from './wordByWord'
 
 export function useAffirmation() {
   return useQuery<Affirmation, Error>({
@@ -12,8 +13,14 @@ export function useAffirmation() {
 }
 
 export default function DisplayAffirmation() {
+  const [displayText, setDisplayText] = useState('')
   const { data, isLoading, isError, error } = useAffirmation()
-
+  useEffect(() => {
+    if (data) {
+      setDisplayText('')
+      wordByWord(data, setDisplayText)
+    }
+  }, [data])
   if (isLoading) {
     return <LoadingSpinner />
   }
@@ -25,7 +32,7 @@ export default function DisplayAffirmation() {
   return (
     <div>
       <h2>Affirmation:</h2>
-      <p>{data.affirmation}</p>
+      <p>{displayText}</p>
     </div>
   )
 }

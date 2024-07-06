@@ -1,5 +1,5 @@
 import DisplayAffirmation from './AffDisplay'
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import DisplayImages from './ImgDisplay'
 
 
