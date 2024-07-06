@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { getImages } from '../apiClient'
 import LoadingSpinner from './LoadingSpinner'
+import './main.css'
 
 export function useImages() {
   return useQuery<string[], Error>({
@@ -10,29 +11,22 @@ export function useImages() {
 }
 
 export default function DisplayImages() {
-  const { data, isLoading, isError } = useImages()
+  const { data, isLoading, isError } = useImages();
 
   if (isLoading) {
     return <LoadingSpinner />
   }
 
-  if (isError) {
-    return <p>Something went wrong while fetching images!</p>
+  if (isError || !data || data.length === 0) {
+    return <p>Something went wrong while fetching images!</p>;
   }
 
-  return (
-    <div>
-      <h2>Images:</h2>
-      <div>
-        {data?.map((url) => (
-          <img
-            key={url}
-            src={url}
-            alt="calm"
-            style={{ height: '300px', width: '300px' }}
-          />
-        ))}
-      </div>
-    </div>
-  )
+  const randomIndex = Math.floor(Math.random() * data.length);
+  const randomImage = data[randomIndex];
+
+  if (randomImage) {
+    document.body.style.backgroundImage = `url(${randomImage})`;
+  }
+
+  return null
 }

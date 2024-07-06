@@ -9,5 +9,5 @@ export async function getUnsplash() {
   const res = await request.get(
     'https://api.unsplash.com/photos/?client_id=YOUR_ACCESS_KEY',
   )
-  return res.body //not sure the data structue
+  return res.body
 }
