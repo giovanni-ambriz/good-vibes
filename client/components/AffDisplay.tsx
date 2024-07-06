@@ -3,7 +3,6 @@ import { useQuery } from '@tanstack/react-query'
 import { getAffirmation } from '../apiClient'
 import { Affirmation } from '../../models/affirmations'
 import LoadingSpinner from './LoadingSpinner'
-import { useEffect } from 'react'
 import { wordByWord } from './wordByWord'
 
 export function useAffirmation() {
@@ -12,16 +11,16 @@ export function useAffirmation() {
     queryFn: getAffirmation,
   })
 }
-
-export default function DisplayAffirmation({ refetchAff }: { refetchAff: number }) {
+// { refetchAff }: { refetchAff: number }
+export default function DisplayAffirmation() {
   const [displayText, setDisplayText] = useState('')
-  const { data, isLoading, isFetching, isError, error, refetch } = useAffirmation()
+  const { data, isLoading, isFetching, isError, error} = useAffirmation()
 
-  useEffect(() => {
-    if (refetchAff > 0) {
-      refetch()
-    }
-  }, [refetchAff, refetch])
+  // useEffect(() => {
+  //   if (refetchAff > 0) {
+  //     refetch()
+  //   }
+  // }, [refetchAff, refetch])
   useEffect(() => {
     if (data) {
       setDisplayText('')
