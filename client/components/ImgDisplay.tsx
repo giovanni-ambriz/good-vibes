@@ -1,1 +1,31 @@
-// this is where functions to display a different image when an affirmation is generated should go
+import { useQuery } from '@tanstack/react-query'
+import { getImages } from '../apiClient'
+import LoadingSpinner from './LoadingSpinner'
+import './main.css'
+
+export function useImages() {
+  return useQuery<string[], Error>({
+    queryKey: ['images'],
+    queryFn: getImages,
+  })
+}
+
+export default function DisplayImages({ randomIndex }) {
+  const { data, isLoading, isError } = useImages()
+
+  if (isLoading) {
+    return <LoadingSpinner />
+  }
+
+  if (isError || !data || data.length === 0) {
+    return <p>Something went wrong while fetching images!</p>
+  }
+
+  const randomImage = data[randomIndex]
+
+  if (randomImage) {
+    document.body.style.backgroundImage = `url(${randomImage})`
+  }
+
+  return null
+}
